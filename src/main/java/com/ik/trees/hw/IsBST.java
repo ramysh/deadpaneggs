@@ -1,4 +1,4 @@
-package com.ik.trees.homework;
+package com.ik.trees.hw;
 
 import com.ik.trees.util.Tree;
 
