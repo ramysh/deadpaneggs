@@ -32,7 +32,6 @@ public class BinarySearchTree {
         InPrePost.inOrder(root);
         System.out.println();
 
-
         System.out.println("Searching for 100, no root: " + bst.search(null, 100));
         System.out.println("Searching for 20: " + bst.search(root, 20));
         System.out.println("Searching for 12: " + bst.search(root, 12));
