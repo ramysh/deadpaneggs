@@ -1,6 +1,5 @@
-package com.ik.trees.practice;
-
-import static com.ik.trees.util.Tree.Node;
+package trees;
+import static trees.Tree.Node;
 
 /**
  * @author rpurigella
@@ -41,7 +40,6 @@ public class BinarySearchTree {
         System.out.println("Searching for 35: " + bst.search(root, 35));
 
     }
-
 
     static class BST {
 

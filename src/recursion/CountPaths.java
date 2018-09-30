@@ -1,4 +1,4 @@
-package com.ik.recursion.pre;
+package recursion;
 
 /**
  * TODO time and space complexity for all 3 methods

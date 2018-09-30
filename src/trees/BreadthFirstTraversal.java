@@ -1,11 +1,8 @@
-package com.ik.trees.practice;
-
-import com.ik.trees.util.Tree;
+package trees;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
-import static com.ik.trees.util.Tree.Node;
+import static trees.Tree.Node;
 
 /**
  * @author rpurigella
@@ -13,7 +10,7 @@ import static com.ik.trees.util.Tree.Node;
 public class BreadthFirstTraversal {
 
     public static void main(String[] args) {
-        Tree.Node node1 = new Node(1);
+        Node node1 = new Node(1);
         Node node2 = new Node(2);
         Node node3 = new Node(3);
         Node node4 = new Node(4);

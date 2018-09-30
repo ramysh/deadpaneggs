@@ -1,10 +1,8 @@
-package com.ik.trees.hw;
-
-import com.ik.trees.util.Tree;
+package trees;
 
 import java.util.Stack;
+import static trees.Tree.Node;
 
-import static com.ik.trees.util.Tree.Node;
 
 /**
  * @author rpurigella
@@ -12,7 +10,8 @@ import static com.ik.trees.util.Tree.Node;
 public class RootToLeafPaths {
 
     public static void main(String[] args){
-        Node n = Tree.createTree("40 10 5 # # 15 # # 45 22 # # 65 # #");
+        Node n = null;
+        //n = createTree();
         //printInorder(n);
         printAllPaths(n);
 

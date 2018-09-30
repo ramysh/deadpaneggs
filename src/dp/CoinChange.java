@@ -1,4 +1,4 @@
-package com.ik.dp.pre;
+package dp;
 
 import java.util.HashMap;
 

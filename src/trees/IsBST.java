@@ -1,8 +1,6 @@
-package com.ik.trees.hw;
+package trees;
 
-import com.ik.trees.util.Tree;
-
-import static com.ik.trees.util.Tree.Node;
+import static trees.Tree.Node;
 
 /**
  * @author rpurigella
@@ -28,7 +26,8 @@ public class IsBST {
         System.out.println(findMin(null, 2, null));
         System.out.println(findMin(1, 2, 4));
 
-        Tree.Node n = Tree.createTree("40 10 5 # # 15 # # 45 44 # # 65 # #");
+        Node n = null;
+        //n= createTree();
         System.out.println(isValidBST(n));
 
     }

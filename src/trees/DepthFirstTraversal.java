@@ -1,8 +1,7 @@
-package com.ik.trees.practice;
+package trees;
 
 import java.util.Stack;
-
-import static com.ik.trees.util.Tree.Node;
+import static trees.Tree.Node;
 
 /**
  * @author rpurigella
