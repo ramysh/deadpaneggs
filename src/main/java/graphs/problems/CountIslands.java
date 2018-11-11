@@ -1,4 +1,4 @@
-package graphs;
+package graphs.problems;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -59,14 +59,6 @@ public class CountIslands {
     // Dont use extra memory
     public static void main(String[] args) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        String s = "qwert";
-        char ch = s.charAt(1);
-        char qw = '!';
-
-        String[] trie = new String[200];
-        trie[119] = "asdf";
-        System.out.println(trie[ch]);
 
         int rows = Integer.parseInt(scan.nextLine().trim());
 

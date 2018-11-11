@@ -1,4 +1,4 @@
-package graphs;
+package graphs.problems;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -66,6 +66,81 @@ public class KnightsTourChess {
         }
     }
 
+
+    /*
+     * With path
+     */
+    static List<Node> find_minimum_path_of_moves(int rows, int cols, int start_row, int start_col, int end_row, int end_col) {
+        // Write your code here.
+
+        int[] n1 = {1, 1, -1, -1, 2, 2, -2, -2};
+        int[] n2 = {2, -2, 2, -2, 1, -1, -1, 1};
+        boolean[][] visited = new boolean[rows][cols];
+        Queue<Node> queue = new LinkedList<>();
+        Node start = new Node (start_row, start_col);
+        visited[start_row][start_col] = true;
+        queue.offer(start);
+
+        while (!queue.isEmpty()) {
+            Node v = queue.poll();
+            if (v.x == end_row && v.y == end_col) {
+                return buildPath(v);
+            }
+            for (Node next : neighbors(v, n1, n2, rows, cols)) {
+                if (!visited[next.x][next.y]) {
+                    visited[next.x][next.y] = true;
+                    next.prev = v;
+                    next.dist = v.dist + 1;
+                    queue.offer(next);
+                }
+            }
+        }
+        return new ArrayList<Node>();
+    }
+
+    static List<Node> buildPath(Node v) {
+        List<Node> path = new ArrayList<>();
+        path.add(v);
+        while(v.prev != null) {
+            path.add(v.prev);
+            v = v.prev;
+        }
+        Collections.reverse(path);
+        return path;
+    }
+
+    static List<Node> neighbors(Node v, int[] n1, int[] n2, int rows, int cols) {
+        List<Node> list = new ArrayList<>();
+        for (int i = 0; i < n1.length; i++) {
+            int a = v.x + n1[i];
+            int b = v.y + n2[i];
+            if (a < rows && a >= 0 && b < cols && b >= 0) {
+                list.add(new Node(a, b));
+            }
+        }
+        return list;
+    }
+
+    static class Node {
+        int x;
+        int y;
+        int dist;
+        Node prev;
+        public Node(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public String toString() {
+            return "BoggleNode{" +
+                    "dist=" + dist +
+                    ", x=" + x +
+                    ", y=" + y +
+                    '}';
+        }
+    }
+
     private static final Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
@@ -85,7 +160,13 @@ public class KnightsTourChess {
 
         int res = find_minimum_number_of_moves(rows, cols, start_row, start_col, end_row, end_col);
 
-        bw.write(String.valueOf(res));
+        bw.write("min moves = " + String.valueOf(res));
+        bw.newLine();
+
+        for (Node node : find_minimum_path_of_moves(rows, cols, start_row, start_col, end_row, end_col)) {
+            bw.write(node.toString() + "-->");
+        }
+
         bw.newLine();
 
         bw.close();

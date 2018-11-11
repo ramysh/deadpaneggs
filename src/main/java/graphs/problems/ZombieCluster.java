@@ -1,11 +1,12 @@
-package graphs;
+package graphs.problems;
+
+import edu.princeton.cs.algs4.StdOut;
+import graphs.Vertex;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by rpurigella on 10/16/18.

@@ -21,7 +21,7 @@ public class Tree {
 
         @Override
         public String toString() {
-            final StringBuilder sb = new StringBuilder("Node{");
+            final StringBuilder sb = new StringBuilder("BoggleNode{");
             sb.append("val=").append(val);
             sb.append(", left=").append(left);
             sb.append(", right=").append(right);
