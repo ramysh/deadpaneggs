@@ -158,6 +158,16 @@ public class DirectedGraph {
         order.push(v.label);
     }
 
+    private void printAllTopoSorts() {
+        int[] inDegree = new int[V];
+        for (Vertex v : adjList) {
+            for (Vertex w : v.neighbors) {
+                inDegree[w.label]++;
+            }
+        }
+        allTopologicalSortsUtil(new boolean[V], inDegree, new ArrayList<Integer>());
+    }
+
     // Main recursive function to print all possible
     // topological sorts
     //TODO revisit backtracking
@@ -201,8 +211,10 @@ public class DirectedGraph {
     }
 
     public static void main(String[] args) {
-        In in = new In("graphs/d_graph001.txt");
+        In in = new In("graphs/d_graph002.txt");
         DirectedGraph g = new DirectedGraph(in);
+        g.printAllTopoSorts();
+        /*
         g.print(g);
         StdOut.print("Reverse ");
         g.print(g.reverse());
@@ -219,13 +231,7 @@ public class DirectedGraph {
             StdOut.print(i + " ");
         }
         StdOut.println();
+        */
 
-        int[] inDegree = new int[g.V];
-        for (Vertex v : g.adjList) {
-            for (Vertex w : v.neighbors) {
-                inDegree[w.label]++;
-            }
-        }
-        g.allTopologicalSortsUtil(new boolean[g.V], inDegree, new ArrayList<Integer>());
     }
 }

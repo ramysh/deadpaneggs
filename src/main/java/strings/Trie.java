@@ -217,6 +217,9 @@ public class Trie implements Iterable<String> {
             set.add(key);
         }
 
+        String lp = "shell";
+        StdOut.println("LongestPrefixOf : " + lp + " = " + set.longestPrefixOf(lp));
+
         StdOut.println("keys:");
         for (String key : set) {
             StdOut.println(key);

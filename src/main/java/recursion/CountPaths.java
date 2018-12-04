@@ -1,7 +1,6 @@
 package recursion;
 
 /**
- * TODO time and space complexity for all 3 methods
  * @author rpurigella
  */
 public class CountPaths {
@@ -15,8 +14,6 @@ public class CountPaths {
     public static void main(String[] args) {
         int[][] grid = new int[10][11];
         long start, end;
-        int i = 4;
-        int j = i + + 6; //TODO huh?
 
         start = System.currentTimeMillis();
         System.out.println("Recursion:");
@@ -28,7 +25,7 @@ public class CountPaths {
         System.out.println("-----------------------");
         System.out.println("Memoization:");
         start = System.currentTimeMillis();
-        System.out.println("Ans = " + countPathsRM(grid)); // TODO run time of recursion with memoization? (nm)?
+        System.out.println("Ans = " + countPathsRM(grid));
         end = System.currentTimeMillis();
         System.out.println("time taken = " + (end - start) + "ms");
         System.out.println("Method calls = " + rMCalls);
