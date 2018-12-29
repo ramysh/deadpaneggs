@@ -1,7 +1,6 @@
 package strings.boggle;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,7 +1,5 @@
 package recursion;
 
-import edu.princeton.cs.algs4.StdOut;
-
 /**
  * @author rpurigella
  */
@@ -28,9 +26,9 @@ public class Permute {
 
     private static void print(char[] a) {
         for(char c : a) {
-            StdOut.print(c);
+            System.out.print(c);
         }
-        StdOut.println();
+        System.out.println();
     }
 
     private static void swap(char[] a, int i, int j) {

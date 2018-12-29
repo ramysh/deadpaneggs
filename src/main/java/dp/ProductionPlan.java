@@ -1,7 +1,5 @@
 package dp;
 
-import edu.princeton.cs.algs4.StdOut;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,13 +32,13 @@ public class ProductionPlan {
         int[] a = {10, 4, 6, 10, 9};
         int[] b = {5, 2, 11, 9, 10};
         Result result = getProfitSequence(t, a, b);
-        StdOut.println("Max profit = " + result.profit);
-        StdOut.print("Sequence = ");
+        System.out.println("Max profit = " + result.profit);
+        System.out.print("Sequence = ");
         for (char c : result.seq) {
-            StdOut.print(c + " ");
+            System.out.print(c + " ");
         }
 
-        StdOut.println();
+        System.out.println();
     }
 
     static Result getProfitSequence(int t, int[] a, int[] b) {

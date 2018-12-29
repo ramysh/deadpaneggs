@@ -1,9 +1,5 @@
 package dp;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
-
 /*
  Given a rope with length n, how should we cut the rope into m parts, with lengths n[0], n[1], ...,n[m - 1], in order to get the maximum product of n[0] * n[1] * ... * n[m - 1]?
 
@@ -34,7 +30,7 @@ import java.util.*;
  */
 public class CutTheRope {
     public static void main(String[] args) {
-        StdOut.println(max_product_from_cut_pieces(5));
+        System.out.println(max_product_from_cut_pieces(5));
     }
 
 /*

@@ -1,9 +1,9 @@
 package strings.boggle;
 
 import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by rpurigella on 11/7/18.
@@ -34,29 +34,29 @@ public class BoggleSolverMain {
         Set<String> validWords = new HashSet<>();
 
         //validWords = BoggleSolverWithHashMap.allValidWordsUsingMap("CollinsWords.txt", board3);
-        StdOut.println(validWords.size());
+        System.out.println(validWords.size());
         for (String word : validWords) {
-            //StdOut.println(word);
+            //System.out.println(word);
         }
-        StdOut.println();
-        StdOut.println();
-        StdOut.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
 
         BoggleSolverWithMappedTrie solver2 = new BoggleSolverWithMappedTrie();
         validWords = solver2.getAllValidWords("strings/CollinsWords.txt", board3);
-        StdOut.println(validWords.size());
+        System.out.println(validWords.size());
         for (String word : validWords) {
-            //StdOut.println(word);
+            //System.out.println(word);
         }
-        StdOut.println();
+        System.out.println();
 
         BoggleSolverWithTrie solver3 = new BoggleSolverWithTrie();
         validWords = solver3.getAllValidWords("strings/CollinsWords.txt", board3);
-        StdOut.println(validWords.size());
+        System.out.println(validWords.size());
         for (String word : validWords) {
-            //StdOut.println(word);
+            //System.out.println(word);
         }
-        StdOut.println();
+        System.out.println();
 
         char[][] board4;
         int r = StdIn.readInt();

@@ -1,8 +1,5 @@
 package strings;
-import java.util.ArrayList;
-import java.util.List;
 
-import static util.DPEUtil.*;
 /**
  * Created by rpurigella on 10/29/18.
  * Look and say sequence : 1, 11, 21, 1211, 111221, 312211, 13112221, ....
@@ -12,7 +9,7 @@ import static util.DPEUtil.*;
 public class LookAndSay {
 
     public static void main(String[] s) {
-        pln(compute(10));
+        System.out.println(compute(10));
     }
 
     static String compute(int n) {
@@ -20,10 +17,10 @@ public class LookAndSay {
         int count = 0;
         while(count < n) {
             s = next(s);
-            pln(s);
+            System.out.println(s);
             count++;
         }
-        pln();
+        System.out.println();
         return s;
     }
 

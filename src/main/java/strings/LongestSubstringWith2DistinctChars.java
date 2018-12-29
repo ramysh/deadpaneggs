@@ -1,8 +1,6 @@
 package strings;
 
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -62,7 +60,7 @@ public class LongestSubstringWith2DistinctChars {
         }
 
         for (String s : set) {
-            StdOut.println("LS2C " + s + " = " + ls2c(s));
+            System.out.println("LS2C " + s + " = " + ls2c(s));
         }
     }
 }

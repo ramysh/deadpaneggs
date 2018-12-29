@@ -2,7 +2,6 @@ package strings;
 
 import java.util.Arrays;
 
-import static util.DPEUtil.pln;
 
 /**
  * Created by rpurigella on 10/29/18.
@@ -36,7 +35,7 @@ public class ReplaceAndRemove {
     public static void main(String[] args) {
         String s = "bacdbbca";
         char[] c = s.toCharArray();
-        pln(rAndR(5, c));
-        pln(Arrays.toString(c));
+        System.out.println(rAndR(5, c));
+        System.out.println(Arrays.toString(c));
     }
 }

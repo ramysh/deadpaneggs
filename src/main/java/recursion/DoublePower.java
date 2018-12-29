@@ -1,16 +1,12 @@
 package recursion;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
-
 /**
  * @author rpurigella
  */
 public class DoublePower {
     public static void main(String[] args) {
-        StdOut.println("Math: " + Math.pow(45.6, -4));
-        StdOut.println("Mine: " + pow(45.6f, -4));
+        System.out.println("Math: " + Math.pow(45.6, -4));
+        System.out.println("Mine: " + pow(45.6f, -4));
     }
 
     static float pow(float dblbase, int ipower) {

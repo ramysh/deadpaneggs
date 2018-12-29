@@ -1,5 +1,9 @@
 package trees;
 
+import javax.jnlp.IntegrationService;
+
+import java.util.LinkedList;
+
 import static trees.Tree.Node;
 
 /**
@@ -20,18 +24,13 @@ public class IsBST {
     }
 
     public static void main(String[] args) {
-        System.out.println(findMin(null, null, null));
-        System.out.println(findMin(null, 1, 2));
-        System.out.println(findMin(null, null, 2));
-        System.out.println(findMin(null, 2, null));
-        System.out.println(findMin(1, 2, 4));
-
-        Node n = null;
-        //n= createTree();
-        System.out.println(isValidBST(n));
-
+        Node root = Tree.deserialize("20,10,30,5,15,19,35,#,#,#,#,#,#,#,#");
+        System.out.println(isBST(root));
     }
 
+    /*
+     * Using result object
+     */
     static boolean isBST(Node root) {
         Result result = isBSTUtil(root);
         return result.ans;
@@ -100,37 +99,5 @@ public class IsBST {
             min = three;
         }
         return min;
-    }
-
-    public static boolean isValidBST(Node root) {
-        TreeNodeWrapper prev = new TreeNodeWrapper(null);
-        return isValidBST(root, prev);
-    }
-
-    private static boolean isValidBST(Node root, TreeNodeWrapper prev) {
-        if (root == null) {
-            return true;
-        }
-
-        if (!isValidBST(root.left, prev)) {
-            return false;
-        }
-
-        if (prev.node != null && root.val <= prev.node.val) {
-            return false;
-        }
-        prev.node = root;
-        return isValidBST(root.right, prev);
-    }
-
-    /**
-     * A wrapper class around TreeNode to retain the value across recursive call
-     */
-    private static class TreeNodeWrapper {
-        Node node;
-
-        TreeNodeWrapper(Node node) {
-            this.node = node;
-        }
     }
 }

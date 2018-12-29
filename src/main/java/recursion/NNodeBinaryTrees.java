@@ -1,16 +1,12 @@
 package recursion;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
-
 /**
  * @author rpurigella
  */
 public class NNodeBinaryTrees {
 
     public static void main(String[] args) {
-        StdOut.println(how_many_BSTs(3));
+        System.out.println(how_many_BSTs(3));
     }
 
     static long how_many_BSTs(int n) {

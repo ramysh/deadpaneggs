@@ -1,17 +1,13 @@
 package dp;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
-
 /**
  * @author rpurigella
  */
 public class KnightsTourPhonePad {
 
     public static void main(String[] args) {
-        StdOut.println(numPhoneNumbersRecursive(1, 3));
-        StdOut.println(numPhoneNumbersDP(1, 3));
+        System.out.println(numPhoneNumbersRecursive(1, 3));
+        System.out.println(numPhoneNumbersDP(1, 3));
     }
 
     static int[][] a = {{4,6}, {8,6}, {7,9}, {4,8}, {3, 9, 0}, {}, {7, 1, 0}, {2, 6}, {1, 3}, {4, 2}};

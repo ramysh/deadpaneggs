@@ -1,7 +1,6 @@
 package trees;
 
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 import static trees.Tree.Node;
 
@@ -11,57 +10,57 @@ import static trees.Tree.Node;
  */
 public class RootToLeafPaths {
 
-    public static void main(String[] args){
-        Node n = createTree("40 10 5 # # 15 # # 45 22 # # 65 # #");
-        //n = createTree();
-        //printInorder(n);
-        printAllPaths(n);
-
+    static void printPathsUsingStringBuilder(Node root) {
+        StringBuilder sb = new StringBuilder();
+        printPathsUsingStringBuilder(root, sb);
     }
 
-    static Node createTree(String data) {
-        if (data == null || data.length() == 0) return null;
-        StringTokenizer st = new StringTokenizer(data, " ");
-        return deserialize(st);
-    }
-
-    static Node deserialize(StringTokenizer st) {
-        if (!st.hasMoreTokens())
-            return null;
-        String s = st.nextToken();
-        if (s.equals("#"))
-            return null;
-        Node root = new Node(Integer.valueOf(s));
-        root.left = deserialize(st);
-        root.right = deserialize(st);
-
-        return root;
-    }
-    static void printAllPaths(Node root) {
-        printAllPaths(root, new Stack<Integer>());
-    }
-
-    static void printAllPaths(Node root, Stack<Integer> stack) {
+    static void printPathsUsingStringBuilder(Node root, StringBuilder sb) {
         if (root == null) return;
-        stack.push(root.val);
+        int n = sb.length();
+        sb.append(root.val);
+        sb.append("->");
+        if (root.left == null && root.right == null) {
+            sb.append("null");
+            System.out.println(sb.toString());
+        } else {
+            printPathsUsingStringBuilder(root.left, sb);
+            printPathsUsingStringBuilder(root.right, sb);
+        }
+        sb.delete(n, sb.length());
+    }
+
+    static void printPathsUsingStack(Node root) {
+        Stack<Node> stack = new Stack<>();
+        printPathsUsingStack(root, stack);
+    }
+
+    static void printPathsUsingStack(Node root, Stack<Node> stack) {
+        if (root == null) return;
+        stack.push(root);
         if (root.left == null && root.right == null) {
             print(stack);
+        } else {
+            printPathsUsingStack(root.left, stack);
+            printPathsUsingStack(root.right, stack);
         }
-        printAllPaths(root.left, stack);
-        printAllPaths(root.right, stack);
         stack.pop();
     }
 
-    static void print(Stack<Integer> stack) {
-        int j = 0;
-        for (int i : stack) {
-            if (j != 0) {
-                System.out.print(" ");
-                j++;
-            }
-            System.out.print(i);
+    static void print(Stack<Node> stack) {
+        StringBuilder sb = new StringBuilder();
+        for (Node node : stack) {
+            sb.append(node.val);
+            sb.append("->");
         }
-        System.out.println();
+        sb.append("null");
+        System.out.println(sb.toString());
     }
 
+
+    public static void main(String[] args){
+        Node root = Tree.deserialize("100,2,3,467,5,6,7,8,#,#,9,#,10,11,12,#,#,#,#,#,#,#,#,#,#");
+        printPathsUsingStringBuilder(root);
+        printPathsUsingStack(root);
+    }
 }

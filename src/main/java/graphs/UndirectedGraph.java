@@ -1,7 +1,6 @@
 package graphs;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.*;
 
@@ -33,27 +32,27 @@ public class UndirectedGraph {
     }
 
     public void print(UndirectedGraph g) {
-        StdOut.println("Graph = ");
+        System.out.println("Graph = ");
         for (Vertex v : g.adjList) {
-            StdOut.print(v.label + " : { ");
+            System.out.print(v.label + " : { ");
             for (Vertex w : v.neighbors) {
-                StdOut.print(w.label + " ");
+                System.out.print(w.label + " ");
             }
-            StdOut.println("}");
+            System.out.println("}");
         }
     }
 
     public void dfsCC() {
-        StdOut.println("DFS Connected components: ");
+        System.out.println("DFS Connected components: ");
         Set<Integer> seen = new HashSet<>();
         for (Vertex v : adjList) {
             if (!seen.contains(v.label)) {
                 List<Integer> comp = new ArrayList<>();
                 explore(v, comp, seen);
                 for (Integer cv : comp) {
-                    StdOut.print(cv + " ");
+                    System.out.print(cv + " ");
                 }
-                StdOut.println();
+                System.out.println();
             }
         }
     }
@@ -102,7 +101,7 @@ public class UndirectedGraph {
     }
 
     public void bfsCC() {
-        StdOut.println("BFS Connected components: ");
+        System.out.println("BFS Connected components: ");
         Set<Integer> seen = new HashSet<>();
         Queue<Vertex> queue = new LinkedList<>();
         for (Vertex v : adjList) {
@@ -121,9 +120,9 @@ public class UndirectedGraph {
                     }
                 }
                 for (Integer cv : comp) {
-                    StdOut.print(cv + " ");
+                    System.out.print(cv + " ");
                 }
-                StdOut.println();
+                System.out.println();
             }
         }
     }
@@ -220,20 +219,20 @@ public class UndirectedGraph {
         Integer source = 0;
         target.label = 4;
         List<Integer> path = g.dfsPath(g.adjList.get(source), target);
-        StdOut.print("DFS Path = ");
+        System.out.print("DFS Path = ");
         for (Integer i : path) {
-            StdOut.print(i + " ");
+            System.out.print(i + " ");
         }
-        StdOut.println();
+        System.out.println();
 
         path = g.bfsPath(g.adjList.get(source), target);
-        StdOut.print("BFS Path = ");
+        System.out.print("BFS Path = ");
         for (Integer i : path) {
-            StdOut.print(i + " ");
+            System.out.print(i + " ");
         }
-        StdOut.println();
+        System.out.println();
 
-        StdOut.print("Multi source shortest Paths from set { ");
+        System.out.print("Multi source shortest Paths from set { ");
         List<Vertex> set = new ArrayList<>();
         set.add(g.adjList.get(0));
         set.add(g.adjList.get(1));
@@ -241,21 +240,21 @@ public class UndirectedGraph {
         set.add(g.adjList.get(4));
         set.add(g.adjList.get(7));
         for (Vertex s : set) {
-            StdOut.print(s.label + " ");
+            System.out.print(s.label + " ");
         }
-        StdOut.println("}");
+        System.out.println("}");
         Map<Integer, List<Integer>> msp = g.bfsMultiSourcePaths(set);
         for (Integer node : msp.keySet()) {
-            StdOut.print(node + ": ");
+            System.out.print(node + ": ");
             for (Integer nodePath : msp.get(node)) {
-                StdOut.print(nodePath + " ");
+                System.out.print(nodePath + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
         */
         boolean hasCycle = g.isCyclic();
-        StdOut.println("Has Cycle = " + hasCycle);
+        System.out.println("Has Cycle = " + hasCycle);
 
     }
 }

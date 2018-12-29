@@ -1,7 +1,6 @@
 package graphs.problems;
 
 import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.*;
 
@@ -61,12 +60,12 @@ public class Rainfall {
             }
         }
 
-        StdOut.println("Sizes of basins = ");
+        System.out.println("Sizes of basins = ");
         for (List<Integer> cc : ccList) {
-            StdOut.println(cc.size());
+            System.out.println(cc.size());
         }
-        StdOut.println();
-        StdOut.println("Basins = ");
+        System.out.println();
+        System.out.println("Basins = ");
         char[][] basinMap = new char[eMap.length][eMap[0].length];
         char basin = 'A';
         for (List<Integer> cc : ccList) {
@@ -77,9 +76,9 @@ public class Rainfall {
         }
         for (char[] aBasinMap : basinMap) {
             for (int j = 0; j < basinMap[0].length; j++) {
-                StdOut.print(aBasinMap[j] + " ");
+                System.out.print(aBasinMap[j] + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 
@@ -139,12 +138,12 @@ public class Rainfall {
                 eMap[i][j] = StdIn.readInt();
             }
         }
-        StdOut.println("Input = ");
+        System.out.println("Input = ");
         for (int[] anEMap : eMap) {
             for (int j = 0; j < eMap[0].length; j++) {
-                StdOut.print(anEMap[j] + " ");
+                System.out.print(anEMap[j] + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
         rainfall(eMap);

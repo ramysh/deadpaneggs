@@ -1,7 +1,5 @@
 package dp;
 
-import java.util.*;
-
 /**
  * https://leetcode.com/problems/edit-distance/
  * @author rpurigella

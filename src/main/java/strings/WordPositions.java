@@ -1,7 +1,5 @@
 package strings;
 
-import edu.princeton.cs.algs4.StdOut;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,21 +103,21 @@ public class WordPositions {
                 "In curiosity shameless dependent knowledge up. ";
         String[] words = {"at", "if", "exposed", "shameless", "hello"};
 
-        StdOut.println("Reference: ");
+        System.out.println("Reference: ");
         for (int i = 0; i < text.length(); i++) {
-            StdOut.print("[" + text.charAt(i) + " = " + i + "] ");
+            System.out.print("[" + text.charAt(i) + " = " + i + "] ");
         }
-        StdOut.println();
+        System.out.println();
 
         int[][] positions;
-        StdOut.println();
-        StdOut.println();
-        StdOut.println("Using HashMap");
+        System.out.println();
+        System.out.println();
+        System.out.println("Using HashMap");
         positions = findPositionsUsingTrieWithMap(text, words);
         print(positions, words);
-        StdOut.println();
-        StdOut.println();
-        StdOut.println("Using TrieWithMap");
+        System.out.println();
+        System.out.println();
+        System.out.println("Using TrieWithMap");
         positions = findPositionsUsingTrieWithMap(text, words);
         print(positions, words);
 
@@ -127,11 +125,11 @@ public class WordPositions {
 
     static void print(int[][] positions, String[] words) {
         for (int i = 0; i < words.length; i++) {
-            StdOut.print("[" + words[i] + "] = ");
+            System.out.print("[" + words[i] + "] = ");
             for (int pos : positions[i]) {
-                StdOut.print(pos + " ");
+                System.out.print(pos + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 }

@@ -1,8 +1,9 @@
 package strings;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * https://leetcode.com/problems/minimum-window-substring/
@@ -11,7 +12,7 @@ import java.util.*;
 public class MinimumWindowSubstring {
 
     public static void main(String[] args) {
-        StdOut.println(minWindow("ABAACBAB", "AABBC"));
+        System.out.println(minWindow("ABAACBAB", "AABBC"));
     }
 
     static String minWindow(String text, String chars) {

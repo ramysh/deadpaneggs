@@ -1,7 +1,5 @@
 package strings;
 
-import java.util.PriorityQueue;
-
 /**
  * Created by rpurigella on 11/11/18.
  */

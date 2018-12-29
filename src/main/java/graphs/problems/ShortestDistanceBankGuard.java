@@ -1,7 +1,5 @@
 package graphs.problems;
 
-import edu.princeton.cs.algs4.StdOut;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -92,13 +90,13 @@ public class ShortestDistanceBankGuard {
                           {'O', 'O', 'O', 'O', 'G'}};
 
         int[][] output = shortestDistanceFromGuard(input);
-        StdOut.println();
+        System.out.println();
         for (int[] row : output) {
             for(int col : row) {
-                StdOut.print(col + "  ");
+                System.out.print(col + "  ");
             }
-            StdOut.println();
+            System.out.println();
         }
-        StdOut.println();
+        System.out.println();
     }
 }

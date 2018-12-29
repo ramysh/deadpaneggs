@@ -1,7 +1,5 @@
 package dp;
 
-import edu.princeton.cs.algs4.StdOut;
-
 /**
  * https://www.geeksforgeeks.org/optimal-strategy-for-a-game-dp-31/
  * @author rpurigella
@@ -9,7 +7,7 @@ import edu.princeton.cs.algs4.StdOut;
 public class CoinPlay {
     public static void main(String[] args) {
         int[] a = {8, 15, 3, 7};
-        StdOut.println(maxWin(a));
+        System.out.println(maxWin(a));
     }
 
     static int maxWin(int[] v) {

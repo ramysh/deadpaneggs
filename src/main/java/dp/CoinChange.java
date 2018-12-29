@@ -1,8 +1,5 @@
 package dp;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-import edu.princeton.cs.algs4.StdOut;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +17,13 @@ public class CoinChange {
         int A = 100;
         int k[] = {5, 30, 17, 15};
         for (int i : getChangeRecursionMain(A, k)) {
-            StdOut.print(i + " ");
+            System.out.print(i + " ");
         }
-        StdOut.println();
+        System.out.println();
         for (int i : getChangeDP(A, k)) {
-            StdOut.print(i + " ");
+            System.out.print(i + " ");
         }
-        StdOut.println();
+        System.out.println();
     }
 
     static List<Integer> getChangeDP(int A, int[] k) {

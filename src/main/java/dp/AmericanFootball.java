@@ -1,8 +1,7 @@
 package dp;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Find num ways to reach a score
@@ -13,8 +12,8 @@ public class AmericanFootball {
     public static void main(String[] args) {
         int n = 1000;
         int[] k = {2, 3, 6};
-        StdOut.println(waysRecursionMemoMain(n, k));
-        StdOut.println(waysDP(n, k));
+        System.out.println(waysRecursionMemoMain(n, k));
+        System.out.println(waysDP(n, k));
     }
 
     static long waysRecursionMemoMain(int n, int[] k) {

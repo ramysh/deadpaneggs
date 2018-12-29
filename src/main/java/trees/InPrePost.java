@@ -12,6 +12,16 @@ import static trees.Tree.Node;
 public class InPrePost {
 
     public static void main(String[] args) {
+        //Node root = Tree.deserialize("20,10,30,5,15,25,35,#,#,#,#,#,#,#,#");
+        Node root = getTree();
+        inOrder(root);
+        System.out.println();
+        preOrder(root);
+        System.out.println();
+        postOrder(root);
+    }
+
+    private static Node getTree() {
         Node node1 = new Node(1);
         Node node2 = new Node(2);
         Node node3 = new Node(3);
@@ -35,10 +45,7 @@ public class InPrePost {
         node9.right = node11;
         node6.right = node8;
         node8.left = node10;
-        postOrder(node1);
-        System.out.println();
-        postOrderNR(node1);
-        System.out.println();
+        return node1;
     }
 
     public static void inOrder(Node root) {

@@ -1,7 +1,6 @@
 package graphs;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.*;
 
@@ -51,13 +50,13 @@ public class DirectedGraph {
     }
 
     public void print(DirectedGraph g) {
-        StdOut.println("Graph = ");
+        System.out.println("Graph = ");
         for (Vertex v : g.adjList) {
-            StdOut.print(v.label + " : { ");
+            System.out.print(v.label + " : { ");
             for (Vertex w : v.neighbors) {
-                StdOut.print(w.label + " ");
+                System.out.print(w.label + " ");
             }
-            StdOut.println("}");
+            System.out.println("}");
         }
     }
 
@@ -216,21 +215,21 @@ public class DirectedGraph {
         g.printAllTopoSorts();
         /*
         g.print(g);
-        StdOut.print("Reverse ");
+        System.out.print("Reverse ");
         g.print(g.reverse());
 
         List<Integer> cycle = g.cycle();
-        StdOut.print("Cycle Path = ");
+        System.out.print("Cycle Path = ");
         for (Integer i : cycle) {
-            StdOut.print(i + " ");
+            System.out.print(i + " ");
         }
-        StdOut.println();
+        System.out.println();
 
-        StdOut.print("Topological Order = ");
+        System.out.print("Topological Order = ");
         for (Integer i : g.topologicalOrder()) {
-            StdOut.print(i + " ");
+            System.out.print(i + " ");
         }
-        StdOut.println();
+        System.out.println();
         */
 
     }

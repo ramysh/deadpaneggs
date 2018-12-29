@@ -1,18 +1,7 @@
 package dp;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
-
 /**
- Consider a maze mapped to a matrix with an upper left corner at coordinates (row, column) = (0, 0).
- Any movement must be in increasing row or column direction. You must determine the number of distinct paths through the maze.
- You will always start at position (0, 0), the top left, and end up at (max(row), max(column)), the bottom right.
-
- As an example, consider the following  where '1' indicates an open cell and '0' indicates blocked. You can only travel through open cells, so no path can go through the cell at (0, 2).
- There are two distinct paths to the goal.
- 1 1 0 1
- 1 1 1 1
+¡
 
  * @author rpurigella
  */
@@ -24,8 +13,8 @@ public class NumPathsWith1sAnd0s {
                 {1, 0, 1, 1},
                 {1, 1, 1, 1},
         };
-        StdOut.println(numberOfPathsRecursive(grid));
-        StdOut.println(numberOfPaths(grid));
+        System.out.println(numberOfPathsRecursive(grid));
+        System.out.println(numberOfPaths(grid));
     }
 
     static int numberOfPathsRecursive(int[][] a) {

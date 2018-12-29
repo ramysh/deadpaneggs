@@ -1,16 +1,12 @@
 package dp;
 
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.*;
-
 /**
  * @author rpurigella
  */
 public class HouseRobber {
     public static void main(String[] args) {
         int[] values = {6, 1, 2, 7};
-        StdOut.println(maxStolenValue(values));
+        System.out.println(maxStolenValue(values));
     }
 
     static int maxStolenValue(int[] values) {

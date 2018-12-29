@@ -1,7 +1,6 @@
 package strings;
 
 import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.*;
 
@@ -218,30 +217,30 @@ public class Trie implements Iterable<String> {
         }
 
         String lp = "shell";
-        StdOut.println("LongestPrefixOf : " + lp + " = " + set.longestPrefixOf(lp));
+        System.out.println("LongestPrefixOf : " + lp + " = " + set.longestPrefixOf(lp));
 
-        StdOut.println("keys:");
+        System.out.println("keys:");
         for (String key : set) {
-            StdOut.println(key);
+            System.out.println(key);
         }
-        StdOut.println();
-        StdOut.println("Size =" + set.size());
-        StdOut.println();
+        System.out.println();
+        System.out.println("Size =" + set.size());
+        System.out.println();
 
-        StdOut.println("keysWithPrefix(\"shor\"):");
+        System.out.println("keysWithPrefix(\"shor\"):");
         for (String s : set.keysWithPrefix("shor"))
-            StdOut.println(s);
-        StdOut.println();
+            System.out.println(s);
+        System.out.println();
 
-        StdOut.println("keysThatMatch(\".....\"):");
+        System.out.println("keysThatMatch(\".....\"):");
         for (String s : set.keysThatMatch("....."))
-            StdOut.println(s);
-        StdOut.println();
+            System.out.println(s);
+        System.out.println();
 
-        StdOut.println("matcher():");
+        System.out.println("matcher():");
         for (String s : set.matcher("?*"))
-            StdOut.println(s);
-        StdOut.println();
+            System.out.println(s);
+        System.out.println();
     }
 }
 
