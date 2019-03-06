@@ -1,13 +1,12 @@
 package trees;
 
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author rpurigella
  */
-public class Tree {
+public class BinaryTree {
 
     public static class Node {
         public int val;
