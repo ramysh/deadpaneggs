@@ -22,44 +22,24 @@ public class StringTransformation {
                 if (i==j) continue;
                 if (differByOne(words[i], words[j])) {
                     graph.get(words[i]).add(words[j]);
-                    graph.get(words[j]).add(words[i]);
                 }
             }
         }
 
         Set<String> seen = new HashSet<>();
-        Set<String> sources = new HashSet<>();
         Queue<String> queue = new LinkedList<>();
         Map<String, String> map = new HashMap<>();
-        char[] chars = start.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            for (char c = 'a'; c <= 'z'; c++) {
-                char tmp = chars[i];
-                chars[i] = c;
-                String s = new String(chars);
-                if (graph.keySet().contains(s)) {
-                    if (!sources.contains(s)) {
-                        sources.add(s);
-                        queue.add(s);
-                        seen.add(s);
-                        map.put(s, null);
-                    }
-                }
-                chars[i] = tmp;
+
+        for (String sg : graph.keySet()) {
+            if (differByOne(sg, start)) {
+                queue.add(sg);
+                seen.add(sg);
             }
         }
 
         while (!queue.isEmpty()) {
             String v = queue.poll();
-            char[] va = v.toCharArray();
-            for (int i = 0; i < va.length; i++) {
-                for (char c = 'a'; c <= 'z'; c++) {
-                    char tmp = va[i];
-                    va[i] = c;
-                    if (stop.equals(new String(va))) return buildPath(map, start, stop, v);
-                    va[i] = tmp;
-                }
-            }
+            if (v.equals(stop) || differByOne(v, stop)) return buildPath(map, start, stop, v);
             for (String w : graph.get(v)) {
                 if (!seen.contains(w)) {
                     seen.add(w);
@@ -85,7 +65,9 @@ public class StringTransformation {
     static String[] buildPath(Map<String, String> map, String start, String stop, String v) {
         List<String> path = new ArrayList<>();
         path.add(stop);
-        path.add(v);
+        if (!v.equals(stop)) {
+            path.add(v);
+        }
         String parent = map.get(v);
         while(parent != null) {
             path.add(parent);

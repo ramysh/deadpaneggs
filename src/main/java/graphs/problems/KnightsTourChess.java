@@ -95,7 +95,7 @@ public class KnightsTourChess {
                 }
             }
         }
-        return new ArrayList<Node>();
+        return null;
     }
 
     static List<Node> buildPath(Node v) {
@@ -133,7 +133,7 @@ public class KnightsTourChess {
 
         @Override
         public String toString() {
-            return "BoggleNode{" +
+            return "Node{" +
                     "dist=" + dist +
                     ", x=" + x +
                     ", y=" + y +
@@ -141,9 +141,16 @@ public class KnightsTourChess {
         }
     }
 
+    static class Result {
+        boolean pathExists;
+        int dist;
+        int[][] path;
+    }
+
     private static final Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
+
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int rows = Integer.parseInt(scan.nextLine().trim());

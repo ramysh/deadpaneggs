@@ -13,24 +13,25 @@ public class Wildcard {
 
     static String[] find_all_possibilities(String s) {
         List<String> result = new ArrayList<>();
-        solve(s.toCharArray(), 0, result);
+        solve(s, result, new char[s.length()], 0);
         return result.toArray(new String[result.size()]);
     }
 
-    static void solve(char[] s, int i, List<String> result) {
-        if (i == s.length) {
-            result.add(new String(s));
+    static void solve(String s, List<String> result, char[] curr, int i) {
+        if (i == s.length()) {
+            result.add(new String(curr));
             return;
         }
-        char c = s[i];
-        if (c == '0' || c == '1') {
-            solve(s, i + 1, result);
+
+        if (s.charAt(i) != '?') {
+            curr[i] = s.charAt(i);
+            solve(s, result, curr, i + 1);
         } else {
-            s[i] = '0';
-            solve(s, i + 1, result);
-            s[i] = '1';
-            solve(s, i + 1, result);
-            s[i] = '?';
+            curr[i] = '0';
+            solve(s, result, curr, i + 1);
+
+            curr[i] = '1';
+            solve(s, result, curr, i + 1);
         }
     }
 }

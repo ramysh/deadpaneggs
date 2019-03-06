@@ -7,10 +7,8 @@ package trees;
 import java.util.LinkedList;
 import java.util.List;
 
-import static trees.Tree.Node;
-
 public class BoundaryBinaryTree {
-    public List< Integer > boundaryOfBinaryTree(Node root) {
+    public List< Integer > boundaryOfBinaryTree(TreeNode root) {
         List < Integer > left_boundary = new LinkedList< >(), right_boundary = new LinkedList < > (), leaves = new LinkedList < > ();
         preorder(root, left_boundary, right_boundary, leaves, 0);
         left_boundary.addAll(leaves);
@@ -18,7 +16,7 @@ public class BoundaryBinaryTree {
         return left_boundary;
     }
 
-    public boolean isLeaf(Node cur) {
+    public boolean isLeaf(TreeNode cur) {
         return (cur.left == null && cur.right == null);
     }
 
@@ -34,7 +32,7 @@ public class BoundaryBinaryTree {
         return (flag == 0);
     }
 
-    public int leftChildFlag(Node cur, int flag) {
+    public int leftChildFlag(TreeNode cur, int flag) {
         if (isLeftBoundary(flag) || isRoot(flag))
             return 1;
         else if (isRightBoundary(flag) && cur.right == null)
@@ -42,7 +40,7 @@ public class BoundaryBinaryTree {
         else return 3;
     }
 
-    public int rightChildFlag(Node cur, int flag) {
+    public int rightChildFlag(TreeNode cur, int flag) {
         if (isRightBoundary(flag) || isRoot(flag))
             return 2;
         else if (isLeftBoundary(flag) && cur.left == null)
@@ -50,7 +48,7 @@ public class BoundaryBinaryTree {
         else return 3;
     }
 
-    public void preorder(Node cur, List < Integer > left_boundary, List < Integer > right_boundary, List < Integer > leaves, int flag) {
+    public void preorder(TreeNode cur, List < Integer > left_boundary, List < Integer > right_boundary, List < Integer > leaves, int flag) {
         if (cur == null)
             return;
         if (isRightBoundary(flag))

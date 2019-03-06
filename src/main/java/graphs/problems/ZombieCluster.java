@@ -28,7 +28,8 @@ public class ZombieCluster {
     static void explore(int curr, Set<Integer> seen, String[] zombies) {
         seen.add(curr);
         for (int i = 0; i < zombies.length; i ++) {
-            if (curr != i && zombies[curr].charAt(i) == '1' && !seen.contains(i)) {
+            if (curr == i) continue;
+            if (zombies[curr].charAt(i) == '1' && !seen.contains(i)) {
                 explore(i, seen, zombies);
             }
         }

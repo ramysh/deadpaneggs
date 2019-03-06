@@ -2,20 +2,18 @@ package trees;
 
 import java.util.Stack;
 
-import static trees.Tree.Node;
-
 
 /**
  * @author rpurigella
  */
 public class RootToLeafPaths {
 
-    static void printPathsUsingStringBuilder(Node root) {
+    static void printPathsUsingStringBuilder(TreeNode root) {
         StringBuilder sb = new StringBuilder();
         printPathsUsingStringBuilder(root, sb);
     }
 
-    static void printPathsUsingStringBuilder(Node root, StringBuilder sb) {
+    static void printPathsUsingStringBuilder(TreeNode root, StringBuilder sb) {
         if (root == null) return;
         int n = sb.length();
         sb.append(root.val);
@@ -30,12 +28,12 @@ public class RootToLeafPaths {
         sb.delete(n, sb.length());
     }
 
-    static void printPathsUsingStack(Node root) {
-        Stack<Node> stack = new Stack<>();
+    static void printPathsUsingStack(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         printPathsUsingStack(root, stack);
     }
 
-    static void printPathsUsingStack(Node root, Stack<Node> stack) {
+    static void printPathsUsingStack(TreeNode root, Stack<TreeNode> stack) {
         if (root == null) return;
         stack.push(root);
         if (root.left == null && root.right == null) {
@@ -47,9 +45,9 @@ public class RootToLeafPaths {
         stack.pop();
     }
 
-    static void print(Stack<Node> stack) {
+    static void print(Stack<TreeNode> stack) {
         StringBuilder sb = new StringBuilder();
-        for (Node node : stack) {
+        for (TreeNode node : stack) {
             sb.append(node.val);
             sb.append("->");
         }
@@ -59,7 +57,7 @@ public class RootToLeafPaths {
 
 
     public static void main(String[] args){
-        Node root = Tree.deserialize("100,2,3,467,5,6,7,8,#,#,9,#,10,11,12,#,#,#,#,#,#,#,#,#,#");
+        TreeNode root = BinaryTree.deserialize("100,2,3,467,5,6,7,8,#,#,9,#,10,11,12,#,#,#,#,#,#,#,#,#,#");
         printPathsUsingStringBuilder(root);
         printPathsUsingStack(root);
     }

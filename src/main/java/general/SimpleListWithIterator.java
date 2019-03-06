@@ -1,6 +1,7 @@
 package general;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -8,12 +9,12 @@ import java.util.NoSuchElementException;
  */
 public class SimpleListWithIterator<T> implements Iterable<T> {
 
-    Object[] items;
+    T[] items;
     int index = 0;
     int N = 0;
 
     public SimpleListWithIterator(int size) {
-        items = new Object[size];
+        items = (T[]) new Object[size];
     }
 
     public void add(T item) {
@@ -48,4 +49,5 @@ public class SimpleListWithIterator<T> implements Iterable<T> {
             }
         };
     }
+
 }

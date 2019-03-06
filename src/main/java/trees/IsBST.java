@@ -1,11 +1,5 @@
 package trees;
 
-import javax.jnlp.IntegrationService;
-
-import java.util.LinkedList;
-
-import static trees.Tree.Node;
-
 /**
  * @author rpurigella
  */
@@ -24,19 +18,19 @@ public class IsBST {
     }
 
     public static void main(String[] args) {
-        Node root = Tree.deserialize("20,10,30,5,15,19,35,#,#,#,#,#,#,#,#");
+        TreeNode root = BinaryTree.deserialize("20,10,30,5,15,19,35,#,#,#,#,#,#,#,#");
         System.out.println(isBST(root));
     }
 
     /*
      * Using result object
      */
-    static boolean isBST(Node root) {
+    static boolean isBST(TreeNode root) {
         Result result = isBSTUtil(root);
         return result.ans;
     }
 
-    static Result isBSTUtil(Node root) {
+    static Result isBSTUtil(TreeNode root) {
         if (root == null) {
             return new Result(null, null, true);
         }

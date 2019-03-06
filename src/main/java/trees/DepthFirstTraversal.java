@@ -2,21 +2,19 @@ package trees;
 
 import java.util.Stack;
 
-import static trees.Tree.Node;
-
 /**
  * @author rpurigella
  */
 public class DepthFirstTraversal {
 
     public static void main(String[] args) {
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
-        Node node7 = new Node(7);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -28,23 +26,23 @@ public class DepthFirstTraversal {
         dftIterative(node1);
     }
 
-    private static void dftRecursive(Node root) {
+    private static void dftRecursive(TreeNode root) {
         if (root == null) return;
         System.out.print(root.val + " ");
         dftRecursive(root.left);
         dftRecursive(root.right);
     }
 
-    private static void dftIterative(Node root) {
+    private static void dftIterative(TreeNode root) {
         if (root == null) {
             return;
         }
 
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 
         while(!stack.isEmpty()) {
-            Node node = stack.pop();
+            TreeNode node = stack.pop();
             System.out.print(node.val + " ");
             if (node.right != null) {
                 stack.push(node.right);

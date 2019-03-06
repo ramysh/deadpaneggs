@@ -1,13 +1,8 @@
 package trees;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
-
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Stack;
-
-import static trees.Tree.Node;
 
 /**
  * @author rpurigella
@@ -15,12 +10,16 @@ import static trees.Tree.Node;
 public class InPrePost {
 
     public static void main(String[] args) {
-        Node root = getTree();
+        TreeNode root = getTree();
 
         inOrder(root);
         System.out.println();
         inOrderNR(root);
         System.out.println();
+        InorderIterator inorderIterator = new InorderIterator(root);
+        while(inorderIterator.hasNext()) {
+            System.out.print(inorderIterator.next() + " ");
+        }
 
         System.out.println();
         System.out.println();
@@ -37,19 +36,19 @@ public class InPrePost {
         postOrderNR(root);
     }
 
-    static Node getTree() {
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
-        Node node7 = new Node(7);
-        Node node8 = new Node(8);
-        Node node9 = new Node(9);
-        Node node10 = new Node(10);
-        Node node11 = new Node(11);
-        Node node20 = new Node(20);
+    public static TreeNode getTree() {
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+        TreeNode node10 = new TreeNode(10);
+        TreeNode node11 = new TreeNode(11);
+        TreeNode node20 = new TreeNode(20);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -64,43 +63,43 @@ public class InPrePost {
         return node1;
     }
 
-    static void inOrder(Node root) {
+    static void inOrder(TreeNode root) {
         if (root == null) return;
         inOrder(root.left);
         System.out.print(root.val + " ");
         inOrder(root.right);
     }
 
-    static void preOrder(Node root) {
+    static void preOrder(TreeNode root) {
         if (root == null) return;
         System.out.print(root.val + " ");
         preOrder(root.left);
         preOrder(root.right);
     }
 
-    static void postOrder(Node root) {
+    static void postOrder(TreeNode root) {
         if (root == null) return;
         postOrder(root.left);
         postOrder(root.right);
         System.out.print(root.val + " ");
     }
 
-    static void inOrderNR(Node root) {
-        Stack<Node> stack = new Stack<>();
+    static void inOrderNR(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         while(root != null || !stack.isEmpty()) {
             if (root != null) {
                 stack.push(root);
                 root = root.left;
             } else {
-                Node node = stack.pop();
+                TreeNode node = stack.pop();
                 System.out.print(node.val + " ");
                 root = node.right;
             }
         }
     }
 
-    static void preOrderNR(Node root) {
-        Stack<Node> stack = new Stack<>();
+    static void preOrderNR(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         while(root != null || !stack.isEmpty()) {
             if (root != null) {
                 if (root.right != null) stack.push(root.right);
@@ -112,15 +111,15 @@ public class InPrePost {
         }
     }
 
-    static void postOrderNR(Node root) {
-        Stack<Node> stack = new Stack<>();
-        Node prev = null;
+    static void postOrderNR(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode prev = null;
         while(root != null || !stack.isEmpty()) {
             if (root != null) {
                 stack.push(root);
                 root = root.left;
             } else {
-                Node node = stack.pop();
+                TreeNode node = stack.pop();
                 if (node.right != null && prev != node.right) {
                     stack.push(node);
                     root = node.right;
@@ -129,6 +128,34 @@ public class InPrePost {
                     prev = node;
                 }
             }
+        }
+    }
+
+    static class InorderIterator implements Iterator<Integer> {
+        Stack<TreeNode> stack ;
+        TreeNode root;
+
+        public InorderIterator(TreeNode root) {
+            this.root = root;
+            stack = new Stack<>();
+
+        }
+
+        @Override
+        public boolean hasNext() {
+            return root != null || !stack.isEmpty();
+        }
+
+        @Override
+        public Integer next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            TreeNode node = stack.pop();
+            root = node.right;
+            return node.val;
         }
     }
 

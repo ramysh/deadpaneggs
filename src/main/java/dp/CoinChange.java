@@ -14,8 +14,8 @@ public class CoinChange {
      * find the min number of coins needed to make change
      */
     public static void main(String[] args) {
-        int A = 100;
-        int k[] = {5, 30, 17, 15};
+        int A = 8;
+        int k[] = {2, 3, 5};
         for (int i : getChangeRecursionMain(A, k)) {
             System.out.print(i + " ");
         }

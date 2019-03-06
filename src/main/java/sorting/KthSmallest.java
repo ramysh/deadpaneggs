@@ -1,6 +1,7 @@
 package sorting;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Interval1D;
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.*;
@@ -32,7 +33,7 @@ public class KthSmallest {
     }
 
     static int kthSmallest(int[] a, int k) {
-        StdRandom.shuffle(a); //Not doing this now as the input is random. Otherwise needed.
+        StdRandom.shuffle(a);
         int lo = 0;
         int hi = a.length - 1;
 

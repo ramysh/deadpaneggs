@@ -9,7 +9,8 @@ import java.util.List;
 public class PossibleExpressions {
 
     public static void main(String[] args) {
-        generate_all_expressions("234", 68L);
+        generate_all_expressions("23456", 40L);
+        solver("222", 24L);
     }
 
     static String[] generate_all_expressions(String s, long target) {
@@ -58,5 +59,37 @@ public class PossibleExpressions {
             val = val + tmp;
         }
         return val;
+    }
+
+    static String[] solver(String num, long target) {
+        List<String> ret = new ArrayList<>();
+        if (num.length() == 0) return ret.toArray(new String[0]);
+        char[] path = new char[num.length() * 2 - 1];
+        char[] digits = num.toCharArray();
+        long n = 0;
+        for (int i = 0; i < digits.length; i++) {
+            n = n * 10 + digits[i] - '0';
+            path[i] = digits[i];
+            compute(ret, path, i + 1, 0, n, digits, i + 1, target);
+        }
+        return ret.toArray(new String[0]);
+
+    }
+    static void compute(List<String> resultList, char[] charArr, int length, long left, long cur, char[] digits, int position, long target) {
+        if (position == digits.length) {
+            if (left + cur == target) resultList.add(new String(charArr, 0, length));
+            return;
+        }
+        long n = 0;
+        int j = length + 1;
+        for (int i = position; i < digits.length; i++) {
+            n = n * 10 + digits[i] - '0';
+            charArr[j++] = digits[i];
+            charArr[length] = '*';
+            compute(resultList, charArr, j, left, cur * n, digits, i + 1, target);
+            charArr[length] = '+';
+            compute(resultList, charArr, j, left + cur, n, digits, i + 1, target);
+
+        }
     }
 }

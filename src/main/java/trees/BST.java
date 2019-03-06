@@ -1,12 +1,13 @@
 package trees;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author rpurigella
  */
 public class BST<Key extends Comparable<Key>, Value> {
-
     private class Node {
         Key key;
         Value value;

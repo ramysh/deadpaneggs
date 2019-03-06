@@ -1,20 +1,18 @@
 package trees;
 
-import static trees.Tree.Node;
-
 /**
  * Created by rpurigella on 9/29/18.
  */
 public class UpsideDown {
 
     public static void main(String[] args) {
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
-        Node node7 = new Node(7);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -25,13 +23,13 @@ public class UpsideDown {
 
     }
 
-    static Node upside_down(Node root) {
+    static TreeNode upside_down(TreeNode root) {
         if (root == null) return null;
         Result result =  upside_down_recursive(root);
         return result.root;
     }
 
-    static Result upside_down_recursive(Node node) {
+    static Result upside_down_recursive(TreeNode node) {
         if (node.left == null) return new Result(node, node);
         Result leftRes = upside_down_recursive(node.left);
         leftRes.result.left = node.right;
@@ -42,10 +40,10 @@ public class UpsideDown {
     }
 
     static class Result {
-        Node root;
-        Node result;
+        TreeNode root;
+        TreeNode result;
 
-        public Result(Node root, Node result) {
+        public Result(TreeNode root, TreeNode result) {
             this.root = root;
             this.result = result;
         }

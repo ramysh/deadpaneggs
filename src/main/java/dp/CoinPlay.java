@@ -6,28 +6,22 @@ package dp;
  */
 public class CoinPlay {
     public static void main(String[] args) {
-        int[] a = {8, 15, 3, 7};
+        int[] a = {5, 3, 7, 10};
         System.out.println(maxWin(a));
     }
 
     static int maxWin(int[] v) {
-        return 0;
+        return maxWin(v, 0, v.length - 1, true);
     }
 
-
-}
-
-/*
-    static int solve(int[] a, int i, int j, boolean myTurn) {
-        if (j < i) return 0;
+    static int maxWin(int[] v, int i, int j, boolean myTurn) {
+        if (i > j) return 0;
         if (myTurn) {
-            int val1 = solve(a, i+1, j, !myTurn) + a[i];
-            int val2 = solve(a, i, j-1, !myTurn) + a[j];
-            return Math.max(val1, val2);
-        } else if (a[i] > a[j]) {
-            return solve(a, i+1, j, !myTurn);
+            return Math.max(maxWin(v, i+1, j, false) + v[i], maxWin(v, i, j-1, false) + v[j]);
         } else {
-            return solve(a, i, j-1, !myTurn);
+            return Math.min(maxWin(v, i+1, j, true) , maxWin(v, i, j-1, true));
         }
     }
- */
+}
+
+

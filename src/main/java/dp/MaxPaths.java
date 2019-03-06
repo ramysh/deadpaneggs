@@ -16,38 +16,40 @@ public class MaxPaths {
                 {12, -45, 7, -16},
                 {6, -34, 2, 30},
                 {6, 34, 2, 3}};
-        getMaxValuePath(grid);
+        List<Pos> path = getMaxValuePath(grid);
+        System.out.println();
     }
 
     static class Pos {
-        int i;
-        int j;
+        int x;
+        int y;
 
-        public Pos(int i, int j) {
-            this.i = i;
-            this.j = j;
+        public Pos(int x, int y) {
+            this.x = x;
+            this.y = y;
         }
     }
 
     static List<Pos> getMaxValuePath(int[][] grid) {
-        int n = grid.length;
-        int m = grid[0].length;
-        int[][] table = new int[n+1][m+1];
+        int rows = grid.length;
+        int cols = grid[0].length;
 
-        for (int i = 0; i < n+1; i++) {
-            table[i][m] = Integer.MIN_VALUE;
+        int[][] table = new int[rows + 1][cols + 1];
+
+        for (int i = 0; i < rows + 1; i++) {
+            table[i][cols] = Integer.MIN_VALUE;
         }
 
-        for (int i = 0; i < m+1; i++) {
-            table[n][i] = Integer.MIN_VALUE;
+        for (int i = 0; i < cols + 1; i++) {
+            table[rows][i] = Integer.MIN_VALUE;
         }
 
-        table[n-1][m-1] = grid[n-1][m-1];
+        table[rows - 1][cols - 1] = grid[rows - 1][cols - 1];
 
-        for (int i = n-1; i >= 0; i--) {
-            for (int j = m-1; j >= 0; j--) {
-                if (i == n-1 && j == m-1) continue;
-                table[i][j] = grid[i][j] + Math.max(table[i][j+1], table[i+1][j]);
+        for (int i = rows - 1; i >= 0; i--) {
+            for (int j = cols - 1; j >= 0; j--) {
+                if (i == rows - 1 && j == cols - 1) continue;
+                table[i][j] = Math.max(table[i][j+1], table[i+1][j]) + grid[i][j];
             }
         }
         return getPath(table);
@@ -55,25 +57,17 @@ public class MaxPaths {
 
     static List<Pos> getPath(int[][] table) {
         List<Pos> path = new ArrayList<>();
-        int n = table.length -1;
-        int m = table[0].length -1;
-
-        Pos start = new Pos(0,0);
-        path.add(start);
+        Pos pos = new Pos(0,0);
         while(true) {
-            if (start.i == n-1 && start.j == m-1) break;
-            if (table[start.i][start.j+1] > table[start.i+1][start.j]) {
-                start = new Pos(start.i, start.j+1);
-                path.add(start);
+            path.add(pos);
+            if (pos.x == table.length - 2 && pos.y == table[0].length - 2) break;
+            if (table[pos.x][pos.y + 1] > table[pos.x + 1][pos.y]) {
+                pos = new Pos(pos.x, pos.y + 1);
             } else {
-                start = new Pos(start.i+1, start.j);
-                path.add(start);
+                pos = new Pos(pos.x + 1, pos.y);
             }
         }
         return path;
     }
-
-
-
 
 }

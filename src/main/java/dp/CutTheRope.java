@@ -26,41 +26,44 @@ package dp;
  */
 
 /**
- * @author rpurigella TODO
+ * @author rpurigella
  */
 public class CutTheRope {
     public static void main(String[] args) {
-        System.out.println(max_product_from_cut_pieces(5));
+        int n = 4;
+        System.out.println(maxProductMain(n));
+        System.out.println(maxProductDP(n));
     }
 
-/*
-    static long max_product_from_cut_pieces(int n) {
-        long[] table = new long[n+1];
-        table[0] = 1;
+    static long maxProductMain(int n) {
+        return maxProduct(n, n);
+    }
 
-        for (int i = 1; i <= n; i++) {
-
-            int x = (i == n) ? i - 1 : i;
-
-            for (int j = 1; j <= x; j++) {
-                long val = table[i - j] * j;
-                if (table[i] < val) {
-                    table[i] = val;
-                }
+    static long maxProduct(int n, int maxN) {
+        if (n == 0) return 1;
+        long val = 0;
+        if (n == maxN) {
+            for (int cut = 1; cut < n; cut++) {
+                val = Math.max(val, maxProduct(n - cut, maxN) * cut);
+            }
+        } else {
+            for (int cut = 1; cut <= n; cut++) {
+                val = Math.max(val, maxProduct(n - cut, maxN) * cut);
             }
         }
-        return table[n];
+        return val;
     }
-    */
-    static long max_product_from_cut_pieces(int n) {
-        long[] table = new long[n+1];
+
+    static long maxProductDP(int n) {
+        long[] table = new long[n + 1];
         table[0] = 1;
-        table[1] = 1;
-        for(int i = 2; i < table.length; i++) {
-          for(int j = 1; j <= i/2; j++) {
-                table[i] = Math.max(table[i], (i-j) * j);
-                table[i] = Math.max(table[i], table[i-j] * j);
+        for (int i = 1; i < n + 1; i++) {
+            long val = 0;
+            int rope = (i == n) ? i - 1 : i;
+            for (int cut = 1; cut <= rope; cut++) {
+                val = Math.max(val, table[i-cut] * cut);
             }
+            table[i] = val;
         }
         return table[n];
     }

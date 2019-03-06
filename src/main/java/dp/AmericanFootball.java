@@ -10,7 +10,7 @@ import java.util.Map;
 public class AmericanFootball {
 
     public static void main(String[] args) {
-        int n = 1000;
+        int n = 8;
         int[] k = {2, 3, 6};
         System.out.println(waysRecursionMemoMain(n, k));
         System.out.println(waysDP(n, k));

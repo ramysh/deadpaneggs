@@ -7,9 +7,10 @@ package dp;
  */
 public class NStairs {
     public static void main(String[] args) {
-        int[] steps = {2,3};
-        int n = 7;
+        int[] steps = {4,7};
+        int n = 6;
         System.out.println(countWaysToClimb(steps, n));
+        System.out.println(waysRecursive(steps, n));
     }
 
     static int countWaysToClimb(int[] steps, int n) {
@@ -23,6 +24,18 @@ public class NStairs {
             }
         }
         return table[n];
+    }
+
+    static long waysRecursive(int[] steps, int n) {
+        if (n == 0) return 1;
+        if (n < 0) return -1;
+        long val = 0;
+        for (int s : steps) {
+            long result = waysRecursive(steps, n-s);
+            if (result < 1) continue;
+            val += result;
+        }
+        return val;
     }
 }
 

@@ -1,42 +1,25 @@
 package trees;
 
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author rpurigella
  */
 public class BinaryTree {
 
-    public static class Node {
-        public int val;
-        public Node left;
-        public Node right;
-        public Node(int value) {
-            this.val = value;
-        }
-
-        @Override
-        public String toString() {
-            final StringBuilder sb = new StringBuilder("Node{");
-            sb.append("val=").append(val);
-            sb.append(", left=").append(left);
-            sb.append(", right=").append(right);
-            sb.append('}');
-            return sb.toString();
-        }
-    }
-
-    public static String serialize(Node root){
+    public static String serialize(TreeNode root){
         if (root == null) return null;
         StringBuilder sb = new StringBuilder();
-        Queue<Node> q = new LinkedList<>();
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while (true) {
             int s = q.size();
             if (s == 0) break;
             while (s > 0) {
-                Node node = q.remove();
+                TreeNode node = q.remove();
                 if (node != null) {
                     sb.append(node.val);
                     sb.append(",");
@@ -52,25 +35,25 @@ public class BinaryTree {
         return sb.toString();
     }
 
-    public static Node deserialize(String s) {
+    public static TreeNode deserialize(String s) {
         if (s == null || s.length() < 5) return null;
         String[] st = s.split(",");
-        Node root = new Node(Integer.parseInt(st[0]));
-        Queue<Node> queue = new LinkedList<>();
+        TreeNode root = new TreeNode(Integer.parseInt(st[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int i = 1;
         while(!queue.isEmpty()) {
-            Node n = queue.remove();
+            TreeNode n = queue.remove();
             if (n == null) continue;
             if (st[i].equals("#")) {
                 n.left = null;
             } else {
-                n.left = new Node(Integer.parseInt(st[i]));
+                n.left = new TreeNode(Integer.parseInt(st[i]));
             }
             if (st[i+1].equals("#")) {
                 n.right = null;
             } else {
-                n.right = new Node(Integer.parseInt(st[i+1]));
+                n.right = new TreeNode(Integer.parseInt(st[i+1]));
             }
             queue.add(n.left);
             queue.add(n.right);
@@ -79,17 +62,25 @@ public class BinaryTree {
         return root;
     }
 
+    public static TreeNode clone(TreeNode root) {
+        if (root == null) return null;
+        TreeNode node = new TreeNode(root.val);
+        node.left = clone(root.left);
+        node.right = clone(root.right);
+        return node;
+    }
+
     public static void main(String[] args) {
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
-        Node node7 = new Node(7);
-        Node node10 = new Node(10);
-        Node node11 = new Node(11);
-        Node node12 = new Node(12);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node10 = new TreeNode(10);
+        TreeNode node11 = new TreeNode(11);
+        TreeNode node12 = new TreeNode(12);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -99,8 +90,11 @@ public class BinaryTree {
         node7.right = node10;
         node10.left = node11;
         node10.right = node12;
-        String s = serialize(node1);
-        Node root = deserialize(s);
-        System.out.println(s);
+        String s1 = serialize(node1);
+        TreeNode root = deserialize(s1);
+        System.out.println(s1);
+        TreeNode root2 = clone(root);
+        String s2 = serialize(root2);
+        System.out.println(s1.equals(s2));
     }
 }

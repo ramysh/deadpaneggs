@@ -5,23 +5,43 @@ package dp;
  */
 public class HouseRobber {
     public static void main(String[] args) {
-        int[] values = {6, 1, 2, 7};
-        System.out.println(maxStolenValue(values));
+        int[] values = {6,
+                1,
+                6,
+                1,
+                1,
+                10,
+                1,
+                8,
+                3,
+                2,
+                7,
+                3};
+        System.out.println(maxStolenValueRecursion(values));
+        System.out.println(maxStolenValueDP(values));
     }
 
-    static int maxStolenValue(int[] values) {
-        int n = values.length;
-        int[] table = new int[n];
-        table[n-1] = values[n-1];
-        if (values[n-1] > values[n-2]) {
-            table[n-2] = values[n-1];
+    static int maxStolenValueRecursion(int[] values) {
+        return maxValue(values, 0, false);
+    }
+
+    static int maxValue(int[] values, int i, boolean stolen) {
+        if (i == values.length) return 0;
+        if (!stolen) {
+            return Math.max(maxValue(values, i + 1, false), values[i] + maxValue(values, i + 1, true));
         } else {
-            table[n-2] = values[n-2];
+            return maxValue(values, i + 1, false);
         }
-        for (int i = n-3; i >= 0; i--) {
-            table[i] = Math.max(values[i] + table[i+2], table[i+1]);
+    }
+
+    static int maxStolenValueDP(int[] values) {
+        int v = values.length;
+        int[] table = new int[v + 1];
+        table[0] = 0;
+        table[1] = values[0];
+        for (int i = 2; i < v + 1; i++) {
+            table[i] = Math.max(table[i-1], values[i-1] + table[i-2]);
         }
-        return table[0];
+        return table[v];
     }
 }
-

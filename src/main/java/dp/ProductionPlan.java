@@ -29,8 +29,8 @@ public class ProductionPlan {
 
     public static void main(String[] args) {
         int t = 5;
-        int[] a = {10, 4, 6, 10, 9};
-        int[] b = {5, 2, 11, 9, 10};
+        int[] a = {5, 2, 11, 9, 10};
+        int[] b = {10, 4, 6, 10, 9};
         Result result = getProfitSequence(t, a, b);
         System.out.println("Max profit = " + result.profit);
         System.out.print("Sequence = ");
